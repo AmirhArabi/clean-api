@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse, JsonResponse
+from django.http import HttpResponse, JsonResponse, HttpResponseRedirect
 from .models import Url
 from .forms import UrlForm
 from .utils import Shortener
@@ -29,7 +29,7 @@ def redirect_to(request, token):
     url = Url.objects.get(short_url=token)
     url.click_count += 1
     url.save()
-    return redirect(url.url)
+    return HttpResponseRedirect(url.url)
 
 
 def get(request, token):
