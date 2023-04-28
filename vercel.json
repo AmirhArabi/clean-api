@@ -20,7 +20,7 @@
         "dest": "/static/$1"
       },
        {
-        "src": "f/(.*)",
+        "src": "/f/(.*)",
         "headers": { "Location": "https://example.com/$1" }
       },
       {
