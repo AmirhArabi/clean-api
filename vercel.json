@@ -18,6 +18,14 @@
       {
         "src": "/static/(.*)",
         "dest": "/static/$1"
+      },
+      {
+        "src": "f/(.*)",
+        "dest": "(.*)"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "clean_url/wsgi.py"
       }
     ]
   }
