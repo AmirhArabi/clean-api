@@ -23,8 +23,5 @@
         "src": "/(.*)",
         "dest": "clean_url/wsgi.py"
       }
-    ],
-    "rewrites": [
-      { "source": "/(.*)", "destination": "/clean_url/wsgi.py" }
     ]
   }
