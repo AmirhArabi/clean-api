@@ -21,6 +21,7 @@
       },
        {
         "src": "/f/(.*)",
+        "status": 307,
         "headers": { "Location": "https://example.com/$1" }
       },
       {
