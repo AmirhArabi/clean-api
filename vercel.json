@@ -21,7 +21,7 @@
       },
        {
         "src": "f/(.*)",
-        "headers": { "Location": "$1" }
+        "headers": { "Location": "https://example.com/$1" }
       },
       {
         "src": "/(.*)",
