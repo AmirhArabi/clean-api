@@ -20,7 +20,7 @@
         "dest": "/static/$1"
       },
       {
-        "src": "/",
+        "src": "/(.*)",
         "dest": "clean_url/wsgi.py"
       }
     ]
