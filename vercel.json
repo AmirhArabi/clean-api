@@ -19,13 +19,8 @@
         "src": "/static/(.*)",
         "dest": "/static/$1"
       },
-       {
-        "src": "/f/(.*)",
-        "status": 307,
-        "headers": { "Location": "$1" }
-      },
       {
-        "src": "/(.*)",
+        "src": "/",
         "dest": "clean_url/wsgi.py"
       }
     ]
