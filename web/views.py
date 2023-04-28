@@ -29,9 +29,7 @@ def redirect_to(request, token):
     url = Url.objects.get(short_url=token)
     url.click_count += 1
     url.save()
-    # return HttpResponseRedirect(url.url)
-    ul = url.url.replace("http://", "").replace("https://", "")
-    return HttpResponseRedirect("https://" + ul)
+    return HttpResponseRedirect(url.url)
 
 def get(request, token):
     try:
