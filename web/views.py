@@ -30,7 +30,7 @@ def redirect_to(request, token):
     url.click_count += 1
     url.save()
     # return HttpResponseRedirect(url.url)
-    return HttpResponsePermanentRedirect("https://www.youtube.com/watch?v=5v3d7hPLprw")
+    return HttpResponsePermanentRedirect(url.url)
 
 def get(request, token):
     try:
