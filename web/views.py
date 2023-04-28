@@ -36,7 +36,7 @@ def redirect_to(request, token):
     if not full_url.startswith('http://') and not full_url.startswith('https://'):
         full_url = 'http://' + full_url
 
-    return HttpResponseRedirect(full_url)
+    return redirect(full_url)
 
 def get(request, token):
     try:
