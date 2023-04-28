@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, JsonResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
+from django.urls import reverse
+
 from .models import Url
 from .forms import UrlForm
 from .utils import Shortener
@@ -29,7 +31,12 @@ def redirect_to(request, token):
     url = Url.objects.get(short_url=token)
     url.click_count += 1
     url.save()
-    return HttpResponseRedirect(url.url)
+
+    full_url = url.url
+    if not full_url.startswith('http://') and not full_url.startswith('https://'):
+        full_url = 'http://' + full_url
+
+    return HttpResponseRedirect(reverse('redirect_to', args=(token,)))
 
 def get(request, token):
     try:
