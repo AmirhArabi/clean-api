@@ -31,7 +31,7 @@ def redirect_to(request, token):
     url.save()
     # return HttpResponseRedirect(url.url)
     ul = url.url.replace("http://", "").replace("https://", "")
-    return HttpResponseRedirect("http://" + ul)
+    return HttpResponseRedirect("https://" + ul)
 
 def get(request, token):
     try:
