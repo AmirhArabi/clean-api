@@ -19,9 +19,9 @@
         "src": "/static/(.*)",
         "dest": "/static/$1"
       },
-      {
-        "src": "/(.*)",
-        "dest": "clean_url/wsgi.py"
-      }
+//      {
+//        "src": "/(.*)",
+//        "dest": "clean_url/wsgi.py"
+//      }
     ]
   }
