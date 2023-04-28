@@ -30,7 +30,8 @@ def redirect_to(request, token):
     url.click_count += 1
     url.save()
     # return HttpResponseRedirect(url.url)
-    return HttpResponsePermanentRedirect(url.url)
+    ul = url.url.replace("http://", "").replace("https://", "")
+    return HttpResponseRedirect("http://" + ul)
 
 def get(request, token):
     try:
