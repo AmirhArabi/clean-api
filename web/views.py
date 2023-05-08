@@ -41,8 +41,13 @@ def redirect_to(request, token):
 def get(request, token):
     try:
         url = Url.objects.get(short_url=token)
-        data = {"short_url": token, "long_url": url.url, "click_count": str(url.click_count),
-                "created_at": url.created_at.strftime("%Y-%m-%d %H:%M:%S")}
+        data = {
+            "token": token,
+            "short_url": "http://{}/{}".format(request.get_host(), token),
+            "long_url": url.url,
+            "click_count": str(url.click_count),
+            "created_at": url.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        }
         return JsonResponse(data)
     except Exception as e:
         return JsonResponse({"error": str(e)})
