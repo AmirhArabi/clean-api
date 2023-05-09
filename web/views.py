@@ -38,15 +38,17 @@ def redirect_to(request, token):
 
     return redirect(full_url.replace("https:/", ""))
 
+
 def get(request, token):
     try:
         url = Url.objects.get(short_url=token)
         data = {
             "token": token,
-            "short_url": "http://{}/{}".format(request.get_host(), token),
+            "short_url": "https://{}/{}".format(request.get_host(), token),
             "long_url": url.url,
             "click_count": str(url.click_count),
-            "created_at": url.created_at.strftime("%Y-%m-%d %H:%M:%S")
+            "created_at": url.created_at.strftime("%Y-%m-%d %H:%M:%S"),
+            "qr_code": url.qr_code
         }
         return JsonResponse(data)
     except Exception as e:
@@ -60,10 +62,11 @@ def create(request, long_url):
         url = Url(url=long_url, short_url=token)
         url.save()
         data["token"] = token
-        data["short_url"] = "http://{}/{}".format(request.get_host(), token)
+        data["short_url"] = "https://{}/{}".format(request.get_host(), token)
         data["long_url"] = url.url
         data["click_count"] = str(url.click_count)
         data["created_at"] = url.created_at.strftime("%Y-%m-%d %H:%M:%S")
+        data['qr_code'] = url.qr_code
         return JsonResponse(data)
     except Exception as e:
         return JsonResponse({"error": str(e)})
